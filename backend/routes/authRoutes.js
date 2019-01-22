@@ -19,7 +19,7 @@ module.exports = (app) => {
   app.get('/auth/logout', (req, res) => {
     req.logout();
     res.send(req.user);
-  })
+  });
 
   app.get('/auth/getUser', (req, res) => {
     res.send(req.user);

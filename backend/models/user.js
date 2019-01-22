@@ -8,4 +8,5 @@ const UserSchema = new Schema(
    email: String
  }
 );
+
 mongoose.model("User", UserSchema);
