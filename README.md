@@ -18,3 +18,6 @@ R Matthews ([@rrmatthews](https://github.com/rrmatthews))
 
 ## Advisor
 Professor Tim Hickey ([@tjhickey724](https://github.com/tjhickey724))
+
+## Workflow
+To better understand our workflow and progression, please install the Zenhub extension and look at our Zenhub project board for this repository.
