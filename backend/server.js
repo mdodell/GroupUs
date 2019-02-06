@@ -1,11 +1,15 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const cors = require('cors');
 const cookieSession = require("cookie-session");
 const passport = require("passport");
+const app = express();
+
+app.use(cors());
 require("./models/user");
 require("./services/passport");
 
-const app = express();
+
 
 app.use(
   cookieSession({
