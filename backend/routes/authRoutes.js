@@ -22,8 +22,6 @@ module.exports = (app) => {
   });
 
   app.get('/auth/getUser', (req, res) => {
-    console.log("***********E");
-    console.log("in /auth/getUser"); console.log(req.user); console.dir(req)
-;    res.send(req.user);
+    res.send(req.user);
   });
 };
