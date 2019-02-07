@@ -5,7 +5,7 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const app = express();
 
-app.use(cors());
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 require("./models/user");
 require("./services/passport");
 

@@ -7,7 +7,7 @@ const currUser = (user = undefined, action) => {
             user: action.payload
         };
     }
-    return {user: 'bad'}
+    return {user: undefined}
 };
 
 //Events Reducers
