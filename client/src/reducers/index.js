@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
 
 //User Reducers
-const currUser = (user = undefined, action) => {
+const currUser = (user = null, action) => {
     if(action.type === 'RECEIVE_USER'){
-        return {
-            user: action.payload
-        };
+        if(action.payload.user === "") { //if no user data is returned
+            return null
+        }
+        return action.payload;
     }
-    return {user: 'bad'}
+    return user;
 };
 
 //Events Reducers
