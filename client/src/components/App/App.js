@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
+import LoginPage from '../LoginPage/LoginPage';
+import DashboardPage from '../DashboardPage/DashboardPage';
+
+import { Spin } from 'antd';
+
 import { connect } from 'react-redux';
 
-const App = (props) => {
-        if(!props.user) {
-            return <div>Not logged in</div>
+class App extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            loggedIn: false
         }
-        return <div>Logged in</div>
-};
+    }
+
+    componentDidMount(){
+        this.setState({loggedIn: true });
+    }
+
+    render() {
+        const { loggedIn } = this.state;
+        if (loggedIn === false) {
+            return <Spin />
+        } else if (!this.props.user && loggedIn) {
+            return <LoginPage/>
+        } else {
+            return <DashboardPage/>
+        }
+
+    }
+}
 
 const mapStateToProps = (state) => {
     console.log(state);
