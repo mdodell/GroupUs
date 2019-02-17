@@ -20,7 +20,7 @@ class LoginForm extends Component {
                 console.log('Received values of form: ', values);
             }
         });
-    }
+    };
 
     render() {
         const {
