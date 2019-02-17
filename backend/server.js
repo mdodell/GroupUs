@@ -7,6 +7,7 @@ const app = express();
 
 app.use(cors());
 require("./models/user");
+require("./models/event");
 require("./services/passport");
 
 

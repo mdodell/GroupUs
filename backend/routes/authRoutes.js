@@ -1,5 +1,7 @@
 const passport = require("passport");
 const bodyParser = require('body-parser');
+const mongoose = require("mongoose");
+const Event = mongoose.model("Event");
 
 module.exports = (app) => {
   app.use(bodyParser.json());
@@ -77,6 +79,14 @@ module.exports = (app) => {
         return res.json(true);
       });
     })(req, res, next);
+  });
+
+  app.post('/createEvent', function(req, res, next) {
+      if(req.body){
+          const eventMongoose = new Event(req.body).save();
+          return eventMongoose;
+      }
+      return {success: false, message: "EventCreateFailure"};
   });
 
 };
