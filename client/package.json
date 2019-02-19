@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.13.2",
     "axios": "^0.18.0",
+    "babel-plugin-import": "^1.11.0",
     "customize-cra": "^0.2.11",
     "http-proxy-middleware": "^0.19.1",
     "normalize.css": "^8.0.1",
@@ -31,8 +32,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "babel-plugin-import": "^1.11.0"
-  }
+  ]
 }
