@@ -1,32 +1,21 @@
 import React from 'react';
 
-import { Row, Col } from 'antd';
+import Button from 'antd/lib/button';
 
 import LoginForm from '../LoginForm/LoginForm';
-import Navbar from '../Navbar/Navbar'
+
 
 import { LoginBackground, LoginFormContainer } from "../StyledComponents";
 
 const LoginPage = () => {
     return (
         <LoginBackground>
-            <Navbar />
-            <Row
-                type="flex"
-                style={{display: 'flex', height: '100%', flex: '1 1 auto', width: '100vw'}}
-                align="middle"
-                justify="center"
-            >
-                <Col>
-                    <LoginFormContainer>
-                        <LoginForm/>
-                    </LoginFormContainer>
-                </Col>
-            </Row>
+            <LoginFormContainer>
+                <LoginForm/>
+                <Button type="primary">Button</Button>
+            </LoginFormContainer>
         </LoginBackground>
     )
 };
-
-
 
 export default LoginPage;

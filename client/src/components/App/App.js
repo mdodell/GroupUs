@@ -20,15 +20,7 @@ class App extends Component {
     }
 
     render() {
-        const { loggedIn } = this.state;
-        if (loggedIn === false) {
-            return <Spin />
-        } else if (!this.props.user && loggedIn) {
-            return <LoginPage/>
-        } else {
-            return <DashboardPage/>
-        }
-
+       return <LoginPage/>
     }
 }
 
