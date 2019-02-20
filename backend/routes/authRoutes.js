@@ -43,6 +43,10 @@ module.exports = (app) => {
     res.send(req.user);
   });
 
+  app.get('/auth/isAuthenticated', (req, res) => {
+      res.json(req.user ? {isAuthenticated: true} : {isAuthenticated: false})
+  });
+
   app.post('/auth/signup', function(req, res, next) {
     passport.authenticate('local-signup', function(err, user, info) {
       if (err) {
@@ -81,12 +85,47 @@ module.exports = (app) => {
     })(req, res, next);
   });
 
-  app.post('/createEvent', function(req, res, next) {
+  app.post('/createEvent', function(req, res) {
       if(req.body){
-          const eventMongoose = new Event(req.body).save();
-          return eventMongoose;
+          Event.findOne({title: req.body.title}).then(existingEvent => {
+            if (!existingEvent){
+                const eventMongoose = new Event(req.body).save();
+                eventMongoose.then(function(result){
+                    console.log(result);
+                    res.json(result);
+                })
+            }
+            else{
+              res.json({success: false, message: "DuplicateEventTitleFailure"});
+            }
+          });
       }
-      return {success: false, message: "EventCreateFailure"};
+      else{
+        res.json({success: false, message: "EventCreateJSONFailure"});
+      }
   });
+
+    app.post('/submitRegistration', function(req, res) {
+        if(req.body){
+            Event.findOne({title: req.body.title}).then(existingEvent => {
+                if (existingEvent){
+                    if(!existingEvent.registrations){
+                      existingEvent.registrations = [];
+                    }
+                    existingEvent.registrations.push(req.body.properties);
+                    existingEvent.save().then(function(result){
+                        console.log(result);
+                        res.json(result);
+                    })
+                }
+                else{
+                    res.json({success: false, message: "InvalidEventTitleFailure"});
+                }
+            });
+        }
+        else{
+            res.json({success: false, message: "SubmitRegistrationJSONFailure"});
+        }
+    });
 
 };

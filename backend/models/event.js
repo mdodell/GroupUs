@@ -5,7 +5,9 @@ const EventSchema = new Schema(
  {
    title: String,
    type: String,
-   required: [String]
+   required: [String],
+   properties: [],
+   registrations: []
  },
 );
 mongoose.model("Event", EventSchema);
