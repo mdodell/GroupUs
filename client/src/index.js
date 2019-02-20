@@ -5,7 +5,6 @@ import thunkMiddleware from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 
 // import 'normalize.css';
-import './index.css';
 
 import App from './components/App/App';
 import reducers from './reducers';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from 'antd/';
+import { Button } from 'antd';
 
 import LoginForm from '../LoginForm/LoginForm';
 
@@ -12,7 +12,8 @@ const LoginPage = () => {
         <LoginBackground>
             <LoginFormContainer>
                 <LoginForm/>
-                <Button type="primary">Button</Button>
+                <Button type="
+                primary">Button</Button>
             </LoginFormContainer>
         </LoginBackground>
     )
