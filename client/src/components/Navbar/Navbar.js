@@ -7,7 +7,7 @@ class Navbar extends Component {
         return (
             <Row
                 type="flex"
-                style={{width: '100vw', backgroundColor: '#0198ED', height: '50px', boxShadow: '0 2px 8px #f0f1f2'}}
+                style={{position: 'absolute', width: '100vw', backgroundColor: '#0198ED', height: '50px', boxShadow: '0 2px 8px #f0f1f2'}}
                 justify="space-between"
                 align="middle"
             >
