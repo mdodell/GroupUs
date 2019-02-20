@@ -47,3 +47,12 @@ export const FormTitle = styled.h1`
     display: block;
     padding-bottom: 55px;
 `;
+
+export const LoginForm = styled.form`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;  
+`;
