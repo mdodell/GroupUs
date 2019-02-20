@@ -12,8 +12,7 @@ const LoginPage = () => {
         <LoginBackground>
             <LoginFormContainer>
                 <LoginForm/>
-                <Button type="
-                primary">Button</Button>
+                <Button type="primary">Button</Button>
             </LoginFormContainer>
         </LoginBackground>
     )
