@@ -9,6 +9,7 @@ app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 require("./models/user");
 require("./models/event");
 require("./services/passport");
+const flash = require('connect-flash');
 
 
 
@@ -18,6 +19,7 @@ app.use(
     keys: [process.env.COOKIE_KEY]
   })
 );
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 

@@ -5,9 +5,9 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require("mongoose");
 const bcrypt  = require('bcrypt');
 const User = mongoose.model("User");
+const SALT_ROUNDS = 12;
 
 passport.serializeUser((user, done) => {
-  console.log(user);
   done(null, user.id);
 });
 
@@ -67,22 +67,28 @@ passport.use('local-signup', new LocalStrategy(
     passwordField : 'password',
     passReqToCallback : true
   },
-  async(req, email, password, done) => {
-    const user = await User.findOne({
-      where: {
-        email: req.body.email
+  function(req, email, password, done) {
+    console.log(req);
+    console.log(email);
+    console.log(password);
+    console.log(done);
+    User.findOne({
+      email: req.body.email
+    }).then(function(user, err) {
+      if (user) {
+        return done(null, false, req.flash('signupMessage', 'Email taken.'));
+      } else {
+        bcrypt.hash(req.body.password, SALT_ROUNDS, function (err, hash) {
+          const user = new User({
+            email: req.body.email,
+            password: hash,
+            strategy: "local"
+          }).save().then(function(user, err) {
+            done(null, user);
+          });
+        });
       }
     });
-    if (user) {
-      return done(null, false, req.flash('signupMessage', 'Email taken.'));
-    } else {
-      const user = await new User({
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8), null),
-        strategy: "local"
-      }).save();
-      done(null, user);
-    }
   }
 )
 );
@@ -95,18 +101,17 @@ passport.use('local-login', new LocalStrategy(
   },
   function(req, email, password, done) {
     User.findOne({
-      where: {
-        email: req.body.email
-      }
+      email: req.body.email
     }).then(function(user, err) {
-      (!bcrypt.compareSync(password, req.body.password));
-      if (!user){
-        return done(null, false, req.flash('loginMessage', 'No user found.'));
-      }
-      if (user && !bcrypt.compareSync(password, req.body.password)){
-        return done(null, false, req.flash('loginMessage', 'Wrong password.'));
-      }
-      return done(null, user);
+      bcrypt.compare(password, req.body.password, function (err, result){
+        if (!user){
+          return done(null, false, req.flash('loginMessage', 'No user found.'));
+        }
+        if (user && !result){
+          return done(null, false, req.flash('loginMessage', 'Wrong password.'));
+        }
+        return done(null, user);
+      });
     });
   }
 )
