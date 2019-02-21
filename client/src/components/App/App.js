@@ -19,7 +19,7 @@ class App extends Component {
     }
 
     render() {
-       return <DashboardPage />
+       return <LoginPage />
     }
 }
 
