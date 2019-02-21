@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
-import { FormTitle, LoginForm} from '../StyledComponents'
+import { FormTitle, LoginForm, LoginInput, InputWrapper, InputIcon, LoginButton, FormText, FormFooterText } from '../StyledComponents'
 
-import { Button } from 'antd';
+import { Icon, Row, Col } from 'antd';
+
+import { GoogleButton, FacebookButton } from '../Buttons/Buttons';
+
+import './LoginFormWrapper.css';
 
 
 class LoginFormWrapper extends Component {
@@ -34,13 +38,45 @@ class LoginFormWrapper extends Component {
 
     render(){
         return (
-            <div>
+            <div className="containerStyle">
                 <FormTitle>Login</FormTitle>
-                <LoginForm onSubmit={this.handleSubmit}>
-                        <input placeholder="username" type="text" value={this.state.username} onChange={this.handleUserNameChange} required/>
-                        <input placeholder="password" type="password" value={this.state.password} onChange={this.handlePasswordChange} required/>
-                    <Button type="primary" onClick={this.handleSubmit}>Submit</Button>
+                <LoginForm autoComplete="new-password" onSubmit={this.handleSubmit}>
+                        <InputWrapper>
+                            <LoginInput
+                                className="loginInput"
+                                placeholder="Email"
+                                type="text"
+                                value={this.state.username}
+                                onChange={this.handleUserNameChange}
+                            />
+                            <InputIcon><Icon type="mail" /></InputIcon>
+                        </InputWrapper>
+
+
+                        <InputWrapper>
+                            <LoginInput
+                                className="loginInput"
+                                placeholder="Password"
+                                type="password"
+                                value={this.state.password}
+                                onChange={this.handlePasswordChange}
+                            />
+                            <InputIcon><Icon type="lock" /></InputIcon>
+                        </InputWrapper>
+
+                    <LoginButton onClick={this.handleSubmit}>Submit</LoginButton>
                 </LoginForm>
+                <FormText>Or login with</FormText>
+                <Row gutter={12} type="flex" align="middle">
+                    <Col span={12}>
+                        <FacebookButton/>
+                    </Col>
+                    <Col span={12}>
+                        <GoogleButton/>
+                    </Col>
+                </Row>
+
+                <FormFooterText>Not a member? Sign up now</FormFooterText>
             </div>
 
         )

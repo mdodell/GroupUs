@@ -1,0 +1,39 @@
+.loginInput:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #e6e6e6 inset;
+}
+
+.loginInput::-webkit-input-placeholder {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.loginInput:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
+
+.loginInput::-moz-placeholder {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.loginInput:focus::-moz-placeholder {
+    opacity: 0;
+}
+
+.loginInput::-ms-input-placeholder {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.loginInput:focus::-ms-input-placeholder {
+    opacity: 0;
+}
+
+
+

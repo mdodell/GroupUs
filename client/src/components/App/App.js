@@ -3,8 +3,6 @@ import './App.css';
 import LoginPage from '../LoginPage/LoginPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
 
-import { Spin } from 'antd';
-
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -21,12 +19,12 @@ class App extends Component {
     }
 
     render() {
-       return <LoginPage/>
+       return <DashboardPage />
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
+    // console.log(state);
     return {
         user: state.currUser
     };
