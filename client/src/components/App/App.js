@@ -1,33 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+
+import PrivateRoute from '../../routes/PrivateRoute';
+
+import {
+    BrowserRouter as Router,
+    Route
+} from "react-router-dom";
+
 import './App.css';
+
 import LoginPage from '../LoginPage/LoginPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
 
-import { connect } from 'react-redux';
-
-class App extends Component {
-
-    constructor(props){
-        super(props);
-        this.state = {
-            loggedIn: false
-        }
-    }
-
-    componentDidMount(){
-        this.setState({loggedIn: true });
-    }
-
-    render() {
-       return <LoginPage />
-    }
-}
-
-const mapStateToProps = (state) => {
-    // console.log(state);
-    return {
-        user: state.currUser
-    };
+const App = () => {
+    return <Router>
+        <div>
+            <Route path="/login" component={LoginPage} />
+            <PrivateRoute path="/dashboard" component={DashboardPage} />
+        </div>
+    </Router>
 };
 
-export default connect(mapStateToProps)(App);
+
+export default App;

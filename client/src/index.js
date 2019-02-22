@@ -14,8 +14,7 @@ import * as serviceWorker from './serviceWorker';
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
-// store.dispatch(fetchUser()).then(() => console.log(store.getState()));
-
+store.dispatch(fetchUser());
 
 ReactDOM.render(
     <Provider store={store}>
