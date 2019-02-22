@@ -182,7 +182,7 @@ export const SocialAuthenticationButtonIcon = styled.img`
 `;
 
 export const FormFooterTextLink = styled.a`
-    
+
 `;
 
 //Dashboard
