@@ -7,8 +7,7 @@ const UserSchema = new Schema(
    name: String,
    email: String,
    password: String,
-   strategy: String,
-   events: []
+   strategy: String
  }
 );
 

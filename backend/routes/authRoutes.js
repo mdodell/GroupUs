@@ -74,7 +74,7 @@ module.exports = (app) => {
         return next(err);
       }
       if (!user) {
-        return res.send({ success : false, message : 'AuthFailure', err: err, user: user, info: info});
+        return res.send({ success : false, message : 'AuthFailure'});
       }
       req.login(user, loginErr => {
         if (loginErr) {
@@ -87,16 +87,18 @@ module.exports = (app) => {
 
   app.post('/createEvent', function(req, res) {
       if(req.body){
-        if(req.body.title && req.body.userId){
-          const eventMongoose = new Event(req.body).save();
-          eventMongoose.then(function(result){
-              console.log(result);
-              res.json(result);
-          })
-        }
-        else{
-          res.json({success: false, message: "EventInvalidJSONFailure"});
-        }
+          Event.findOne({title: req.body.title}).then(existingEvent => {
+            if (!existingEvent){
+                const eventMongoose = new Event(req.body).save();
+                eventMongoose.then(function(result){
+                    console.log(result);
+                    res.json(result);
+                })
+            }
+            else{
+              res.json({success: false, message: "DuplicateEventTitleFailure"});
+            }
+          });
       }
       else{
         res.json({success: false, message: "EventCreateJSONFailure"});
