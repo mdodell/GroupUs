@@ -73,13 +73,14 @@ passport.use('local-signup', new LocalStrategy(
     console.log(password);
     console.log(done);
     User.findOne({
-      email: req.body.email
+      userId: req.body.email
     }).then(function(user, err) {
       if (user) {
         return done(null, false, req.flash('signupMessage', 'Email taken.'));
       } else {
         bcrypt.hash(req.body.password, SALT_ROUNDS, function (err, hash) {
           const user = new User({
+            userId: req.body.email,
             email: req.body.email,
             password: hash,
             strategy: "local"
@@ -101,7 +102,7 @@ passport.use('local-login', new LocalStrategy(
   },
   function(req, email, password, done) {
     User.findOne({
-      email: req.body.email
+      userId: req.body.email
     }).then(function(user, err) {
       bcrypt.compare(password, req.body.password, function (err, result){
         if (!user){

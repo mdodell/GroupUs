@@ -8,6 +8,7 @@ const app = express();
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 require("./models/user");
 require("./models/event");
+require("./models/registration");
 require("./services/passport");
 const flash = require('connect-flash');
 
