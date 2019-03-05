@@ -7,7 +7,7 @@ import { FacebookButtonWrapper, GoogleButtonWrapper, SocialAuthenticationButtonI
 
 export const FacebookButton = () => {
     return(
-        <FacebookButtonWrapper href="#">
+        <FacebookButtonWrapper href="/auth/facebook">
             <SocialAuthenticationButtonIcon alt="Google" src={FacebookImage} />
             Facebook
         </FacebookButtonWrapper>

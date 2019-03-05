@@ -89,7 +89,7 @@ module.exports = (app) => {
 
     app.get('/event/getEvent', (req, res) => {
         if(req.body) {
-            Event.findById(req.id).then(existingEvent => {
+            Event.findById(req.body.id).then(existingEvent => {
                 if(existingEvent){
                     res.json(existingEvent);
                 }
@@ -105,7 +105,7 @@ module.exports = (app) => {
 
     app.get('/event/getRegistration', (req, res) => {
         if(req.body) {
-            Registration.findById(req.id).then(existingRegistration => {
+            Registration.findById(req.body.id).then(existingRegistration => {
                 if(existingRegistration){
                     res.json(existingRegistration);
                 }
