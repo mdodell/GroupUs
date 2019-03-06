@@ -4,30 +4,24 @@ import LoginPage from '../LoginPage/LoginPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
 
 import { connect } from 'react-redux';
+import { fetchUser } from '../../actions';
 
 class App extends Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            loggedIn: false
-        }
-    }
-
     componentDidMount(){
-        this.setState({loggedIn: true });
+        this.props.fetchUser();
     }
 
     render() {
-       return <LoginPage />
+       return <DashboardPage currUser={this.props.user} />
     }
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state);
     return {
         user: state.currUser
     };
+
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { fetchUser })(App);
