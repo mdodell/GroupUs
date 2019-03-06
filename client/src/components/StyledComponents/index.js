@@ -193,3 +193,26 @@ export const DisplayEventsContainer = styled.div`
     position: absolute;
     bottom: 0;
 `;
+
+export const AddEventButton = styled.div`
+    position: absolute;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in;
+    border: 1px solid black;
+    font-size: 24px;
+    
+    &:hover {
+        cursor: pointer;
+        background-color: lightblue;
+        
+    }
+`;

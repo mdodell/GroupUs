@@ -7,6 +7,9 @@ const EventSchema = new Schema(
    type: String,
    description: String,
    userId: String,
+   fromDate: Date,
+   toDate: Date,
+   dateCreated: Date,
    required: [String],
    properties: [],
    registrations: []

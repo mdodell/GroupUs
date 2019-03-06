@@ -23,7 +23,7 @@ class LoginFormWrapper extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(event){
+    handleSubmit(event) {
         alert('Account submitted. Username is: ' + this.state.username + ' password is: ' + this.state.password);
         event.preventDefault();
     }
