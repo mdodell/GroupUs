@@ -135,10 +135,10 @@ module.exports = (app) => {
     });
 
     app.post('/event/createEvent', function(req, res) {
-        if(req.query){
-            User.findOne({userId: req.query.userId}).then(existingUser => {
+        if(req.body){
+            User.findOne({userId: req.body.userId}).then(existingUser => {
                 if (existingUser) {
-                    const eventMongoose = new Event(req.query).save();
+                    const eventMongoose = new Event(req.body).save();
                     eventMongoose.then(function (result) {
                         if(!existingUser.events){
                             existingUser.events = [];
@@ -208,10 +208,10 @@ module.exports = (app) => {
     });
 
     app.post('/event/submitRegistration', function(req, res) {
-        if(req.query){
-            Event.findById(req.query.eventId).then(existingEvent => {
+        if(req.body){
+            Event.findById(req.body.eventId).then(existingEvent => {
                 if (existingEvent){
-                    const registrationMongoose = new Registration(req.query).save();
+                    const registrationMongoose = new Registration(req.body).save();
                     registrationMongoose.then(function (result) {
                         if(!existingEvent.registrations){
                             existingEvent.registrations = [];
