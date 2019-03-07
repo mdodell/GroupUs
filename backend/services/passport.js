@@ -79,7 +79,7 @@ passport.use('local-signup', new LocalStrategy(
                 const user = new User({
                     userId: req.body.email,
                     email: req.body.email,
-                    password: bcrypt.hashSync(req.body.password, SALT_ROUNDS),
+                    password: bcrypt.hashSync(req.body.password, SALT_ROUNDS).toString(),
                     strategy: "local"
                 }).save().then(function(user, err) {
                     done(null, user);
@@ -103,7 +103,7 @@ passport.use('local-login', new LocalStrategy(
             console.log(user.password);
             console.log(req.body.password);
             console.log(password);
-            const result = bcrypt.compareSync(user.password, req.body.password);
+            const result = bcrypt.compareSync(user.password.toString(), req.body.password.toString());
             console.log(result);
             if (!user){
                 return done(null, false, req.flash('loginMessage', 'No user found.'));
