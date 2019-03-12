@@ -3,11 +3,9 @@ GroupUs is a modular group registration web application being developed as part 
 
 ## Getting Started
 1) Download or clone this repository
-2) Run `npm cache clean --force`
-3) Run `rm -rf node_modules` or delete the folder manually
-4) Run `npm install`
-5) Rinse and repeat steps 2-4 in /backend and /client directories
-6) Run `npm start`
+2) Run `npm install`
+3) Rinse and repeat `npm install` in /backend and /client directories
+4) Run `npm start`
 
 ## Developers
 Mitchell Dodell ([@mdodell](https://github.com/mdodell))
