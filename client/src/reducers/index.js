@@ -1,22 +1,56 @@
 import { combineReducers } from 'redux';
 
-//User Reducers
-const currUser = (user = null, action) => {
-    if(action.type === 'RECEIVE_USER'){
-        if(action.payload.user === "") { //if no user data is returned
-            return null
-        }
-        return action.payload;
+import { FETCH_USER_BEGIN, FETCH_USER_SUCCESS, FETCH_USER_FAILURE } from "../actions";
+
+const userInitialState = {
+    user: null,
+    loading: false,
+    error: null
+};
+
+const eventsInitialState = {
+    events: []
+};
+
+// //User Reducers
+const currUser = (user = userInitialState, action) => {
+    switch(action.type) {
+        case FETCH_USER_BEGIN:
+            return {
+                ...userInitialState,
+                loading: true,
+                error: null
+            };
+
+        case FETCH_USER_SUCCESS:
+            console.log(action.payload.user);
+            return {
+                ...userInitialState,
+                loading: false,
+                user: action.payload.user
+            };
+
+        case FETCH_USER_FAILURE:
+            return {
+                ...userInitialState,
+                loading: false,
+                error: action.payload.error,
+                user: null
+            };
+
+        default:
+            return user;
     }
-    return user;
 };
 
 //Events Reducers
-const events = (oldListOfEvents = [], action) => {
+const events = (state = eventsInitialState, action) => {
   if(action.type === 'ADD_EVENT'){
-      return [...oldListOfEvents, action.payload];
+      return {
+          events: [...state.events, action.payload]
+      }
   }
-  return oldListOfEvents;
+  return state;
 };
 
 //Database Reducers

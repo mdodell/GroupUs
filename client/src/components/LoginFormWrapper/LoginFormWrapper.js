@@ -51,8 +51,6 @@ class LoginFormWrapper extends Component {
                             />
                             <InputIcon><Icon type="mail" /></InputIcon>
                         </InputWrapper>
-
-
                         <InputWrapper>
                             <LoginInput
                                 className="loginInput"
@@ -69,10 +67,10 @@ class LoginFormWrapper extends Component {
                 <FormText>Or login with</FormText>
                 <Row gutter={12} type="flex" align="middle">
                     <Col span={12}>
-                        <FacebookButton/>
+                        <FacebookButton />
                     </Col>
                     <Col span={12}>
-                        <GoogleButton/>
+                        <GoogleButton />
                     </Col>
                 </Row>
 
