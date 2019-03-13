@@ -73,13 +73,14 @@
 
         render(){
                 return (
+                    <div>
+                        <AddEventButton onClick={this.showModal}>
+                            <Icon type="plus" />
+                        </AddEventButton>
                     <DisplayEventsContainer>
                         <Row gutter={2} justify="space-around" type="flex">
                             {this.renderEventCards(this.props.listOfEvents.events)}
                         </Row>
-                        <AddEventButton onClick={this.showModal}>
-                            <Icon type="plus" />
-                        </AddEventButton>
                         <AddEventModal
                             wrappedComponentRef={this.saveFormRef}
                             visible={this.state.addEventModalVisible}
@@ -87,6 +88,7 @@
                             onCancel={this.handleModalCancel}
                         />
                     </DisplayEventsContainer>
+                    </div>
                 )
         }
 

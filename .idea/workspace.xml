@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8e21017-81d2-497b-b132-973cc15e7acb" name="Default" comment="Created minimum-viable product login page. Added a basic NavBar, Login, and LoginContainer component. Most of these components are simply display components, with later refactoring to include more functionality. The 'Sign in with Google' button works for now.">
+    <list default="true" id="c8e21017-81d2-497b-b132-973cc15e7acb" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/App/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/DashboardPage/DashboardPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/DashboardPage/DashboardPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/EventCard/EventCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/EventCard/EventCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/LoginFormWrapper/LoginFormWrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LoginFormWrapper/LoginFormWrapper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/StyledComponents/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/StyledComponents/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,14 +36,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DashboardPage.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DashboardPage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/DashboardPage/DashboardPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="52" column="21" lean-forward="true" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+            <state relative-caret-position="141">
+              <caret line="78" column="41" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
               <folding>
                 <element signature="e#4#45#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/src/components/StyledComponents/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="196" column="19" selection-start-line="196" selection-start-column="19" selection-end-line="196" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -90,15 +95,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="960">
               <caret line="72" column="38" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginPage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/LoginPage/LoginPage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -189,6 +185,7 @@
         <option value="$PROJECT_DIR$/client/src/actions/index.js" />
         <option value="$PROJECT_DIR$/client/src/reducers/index.js" />
         <option value="$PROJECT_DIR$/client/src/components/DashboardPage/DashboardPage.js" />
+        <option value="$PROJECT_DIR$/client/src/components/StyledComponents/index.js" />
       </list>
     </option>
   </component>
@@ -394,7 +391,7 @@
       <workItem from="1551759350202" duration="196000" />
       <workItem from="1551759634956" duration="29000" />
       <workItem from="1552364533165" duration="12637000" />
-      <workItem from="1552466553527" duration="89000" />
+      <workItem from="1552466553527" duration="1201000" />
     </task>
     <task id="LOCAL-00001" summary="Added a few semicolons, and set up to work on my machine">
       <created>1548143924040</created>
@@ -410,11 +407,18 @@
       <option name="project" value="LOCAL" />
       <updated>1548222869714</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Got events from user and successfully mapped in Redux. However, need to be able to show an event right after submission. This will require calling a 'fetchEvents' action after a form submit, in order to trigger a re-render.">
+      <created>1552466747402</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1552466747402</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63486000" />
+    <option name="totallyTimeSpent" value="64598000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="830" extended-state="6" />
@@ -450,7 +454,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added a few semicolons, and set up to work on my machine" />
     <MESSAGE value="Created minimum-viable product login page. Added a basic NavBar, Login, and LoginContainer component. Most of these components are simply display components, with later refactoring to include more functionality. The 'Sign in with Google' button works for now." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created minimum-viable product login page. Added a basic NavBar, Login, and LoginContainer component. Most of these components are simply display components, with later refactoring to include more functionality. The 'Sign in with Google' button works for now." />
+    <MESSAGE value="Got events from user and successfully mapped in Redux. However, need to be able to show an event right after submission. This will require calling a 'fetchEvents' action after a form submit, in order to trigger a re-render." />
+    <option name="LAST_COMMIT_MESSAGE" value="Got events from user and successfully mapped in Redux. However, need to be able to show an event right after submission. This will require calling a 'fetchEvents' action after a form submit, in order to trigger a re-render." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/backend/models/user.js">
@@ -627,13 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/StyledComponents/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2625">
-          <caret line="177" column="13" selection-start-line="177" selection-start-column="13" selection-end-line="177" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/Buttons/Buttons.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -694,11 +692,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/DashboardPage/DashboardPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="52" column="21" lean-forward="true" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+        <state relative-caret-position="141">
+          <caret line="78" column="41" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
           <folding>
             <element signature="e#4#45#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/StyledComponents/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="196" column="19" selection-start-line="196" selection-start-column="19" selection-end-line="196" selection-end-column="19" />
         </state>
       </provider>
     </entry>

@@ -188,18 +188,18 @@ export const FormFooterTextLink = styled.a`
 //Dashboard
 export const DisplayEventsContainer = styled.div`
     width: 100%;
-    height: 90vh;
     background-color: #e6e6e6;
-    position: absolute;
-    bottom: 0;
+    top: 10vh;
+    position: relative;
 `;
 
 export const AddEventButton = styled.div`
-    position: absolute;
+    position: fixed;
     border-radius: 50%;
     width: 50px;
     height: 50px;
     background-color: blue;
+    z-index: 2;
     bottom: 10px;
     right: 10px;
     display: flex;
