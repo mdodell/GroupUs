@@ -100,11 +100,7 @@ passport.use('local-login', new LocalStrategy(
         User.findOne({
             userId: req.body.email
         }).then(function(user, err) {
-            console.log(user.password);
-            console.log(req.body.password);
-            console.log(password);
-            const result = bcrypt.compareSync(user.password.toString(), req.body.password.toString());
-            console.log(result);
+            const result = bcrypt.compareSync(req.body.password.toString(), user.password.toString());
             if (!user){
                 return done(null, false, req.flash('loginMessage', 'No user found.'));
             }
