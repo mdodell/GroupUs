@@ -43,18 +43,12 @@ const schema = {
             }
         }
     }
-}
+};
 
 class EventForm extends Component {
 
     componentDidMount(){
         this.getEvent(this.props.match.params.id);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if(this.props.match.params.id !== nextProps.match.params.id) {
-            this.getEvent(nextProps.match.params.id);
-        }
     }
 
     onSubmit = ({formData}) => console.log("Data submitted: ",  formData);

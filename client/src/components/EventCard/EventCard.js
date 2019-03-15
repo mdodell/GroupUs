@@ -1,9 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import { Card, Icon } from 'antd';
-
-import LoginPage from '../../components/LoginPage/LoginPage'
+import { Card } from 'antd';
 
 import EventCardLink from './EventCardLink';
 

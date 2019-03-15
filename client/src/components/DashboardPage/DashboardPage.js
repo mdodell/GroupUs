@@ -6,7 +6,7 @@
 
     import { DisplayEventsContainer, AddEventButton } from "../StyledComponents";
 
-    import { Row, Col, Icon, message } from 'antd';
+    import { Row, Col, Icon } from 'antd';
 
     import { connect } from 'react-redux';
 
