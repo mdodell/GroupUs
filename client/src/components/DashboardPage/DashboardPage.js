@@ -10,7 +10,7 @@
 
     import { connect } from 'react-redux';
 
-    import { fetchUserAndEvents } from '../../actions';
+    import { fetchUserAndEvents, addEventDispatch } from '../../actions';
 
     import axios from 'axios';
 
@@ -21,10 +21,9 @@
         };
 
         renderEventCards = (arrayOfEvents) => {
-            console.log(arrayOfEvents);
             return arrayOfEvents.map((event) =>
                 <Col key={event.newEvent._id} style={{display: "flex"}} span={7}>
-                    <EventCard title={event.newEvent.title} description={event.newEvent.description}/>
+                    <EventCard id={event.newEvent._id} title={event.newEvent.title} description={event.newEvent.description}/>
                 </Col>
             )
         };
@@ -39,18 +38,20 @@
             const { form } = this.formRef.props;
             const formFields = form.getFieldsValue();
 
-            await axios.post('/event/createEvent', {
+            const newEvent = {
                 title: formFields.title,
                 description: formFields.description,
                 fromDate: formFields.datePicker[0].toDate().toISOString(),
                 toDate: formFields.datePicker[1].toDate().toISOString(),
                 dateSubmitted: Date.now(),
                 userId: this.props.currUser.user.userId
-            })
-                .then((response) => console.log(response))
-                .catch(error => console.log(error));
+            };
 
-            window.location.reload(false);
+            await axios.post('/event/createEvent', newEvent)
+                .then((response) => {
+                    this.props.addEventDispatch(response.data); //need to dispatch here, don't have the newEventId
+                })
+                .catch(error => console.log(error));
             this.setState({
                 addEventModalVisible: false
             });
@@ -77,17 +78,17 @@
                         <AddEventButton onClick={this.showModal}>
                             <Icon type="plus" />
                         </AddEventButton>
-                    <DisplayEventsContainer>
-                        <Row gutter={2} justify="space-around" type="flex">
-                            {this.renderEventCards(this.props.listOfEvents.events)}
-                        </Row>
-                        <AddEventModal
-                            wrappedComponentRef={this.saveFormRef}
-                            visible={this.state.addEventModalVisible}
-                            onCreate={this.handleModalCreate}
-                            onCancel={this.handleModalCancel}
-                        />
-                    </DisplayEventsContainer>
+                        <DisplayEventsContainer>
+                            <Row justify="space-around" type="flex">
+                                {this.renderEventCards(this.props.listOfEvents.events)}
+                             </Row>
+                            <AddEventModal
+                                 wrappedComponentRef={this.saveFormRef}
+                                 visible={this.state.addEventModalVisible}
+                                 onCreate={this.handleModalCreate}
+                                 onCancel={this.handleModalCancel}
+                             />
+                        </DisplayEventsContainer>
                     </div>
                 )
         }
@@ -107,4 +108,4 @@
     };
 
 
-    export default connect(mapStateToProps, { fetchUserAndEvents })(DashBoardPage);
+    export default connect(mapStateToProps, { fetchUserAndEvents, addEventDispatch })(DashBoardPage);

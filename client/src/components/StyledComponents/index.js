@@ -1,9 +1,8 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { device } from './devices';
 
 //Page Backgrounds
-
 export const LoginBackground = styled.div`
     min-height: 100vh;
     padding: 15px;
@@ -181,10 +180,6 @@ export const SocialAuthenticationButtonIcon = styled.img`
     margin-right: 10px;
 `;
 
-export const FormFooterTextLink = styled.a`
-
-`;
-
 //Dashboard
 export const DisplayEventsContainer = styled.div`
     width: 100%;
@@ -202,10 +197,18 @@ export const AddEventButton = styled.div`
     z-index: 2;
     bottom: 10px;
     right: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     color: white;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+            align-items: center;
+    -webkit-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
     transition: all 0.5s ease-in;
     border: 1px solid black;
     font-size: 24px;
@@ -215,4 +218,22 @@ export const AddEventButton = styled.div`
         background-color: lightblue;
         
     }
+`;
+
+//Animation Wrappers
+const fadeInKeyframe = keyframes`
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+`;
+
+export const FadeIn = styled.div`
+    display: flex;
+    width: 100%;
+    flex: 1 1 auto;
+    animation: ${fadeInKeyframe} 2s linear forwards;
 `;

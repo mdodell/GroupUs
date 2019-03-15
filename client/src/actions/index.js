@@ -43,6 +43,10 @@ export const fetchUserAndEvents = () => {
     }
 };
 
+export const addEventDispatch = (event) => {
+    return dispatch => dispatch(addEvent(event))
+};
+
 export const addEvent = newEvent => {
     return {
         type: 'ADD_EVENT',
@@ -50,15 +54,6 @@ export const addEvent = newEvent => {
             newEvent
         }
     }
-};
-
-export const createEvent = () => {
-    return dispatch => {
-        return axios.get('http://localhost:3000/event/createEvent', {
-            headers: {"Access-Control-Allow-Origin": "http://localhost:3000"},
-            withCredentials: true
-        }).then(json => dispatch(addEvent(json.data)));
-    };
 };
 
 

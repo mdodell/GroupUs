@@ -54,7 +54,6 @@
                                 )}
                             </Form.Item>
                             <Form.Item label="Description">
-
                                 {getFieldDecorator('description', {
                                     rules: [{ required: true, message: 'Please enter a description' }],
                                 })(

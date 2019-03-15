@@ -144,7 +144,7 @@ module.exports = (app) => {
                             existingUser.events = [];
                         }
                         existingUser.events.push(result._id.toString());
-                        existingUser.save().then(function(result){
+                        existingUser.save().then(function(userResult){
                             res.json(result);
                         })
                     })
