@@ -92,13 +92,7 @@
                     </div>
                 )
         }
-
-        componentDidMount(){
-            this.props.fetchUserAndEvents();
-        }
     };
-
-
 
     const mapStateToProps = state => {
         return {

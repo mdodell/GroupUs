@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import Form from "react-jsonschema-form";
 
+import { Link } from 'react-router-dom';
+
 const schema = {
     "title": "A list of tasks",
     "type": "object",
@@ -78,6 +80,7 @@ class EventForm extends Component {
                      onChange={console.log("changed")}
                      onSubmit={this.onSubmit}
                      onError={console.log("errors")} />
+               <Link to="/dashboard">Dashboard Link</Link>
            </div>
        ) : <h1>Loading</h1>
     }

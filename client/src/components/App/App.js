@@ -21,6 +21,10 @@ class App extends Component {
             </Router>
         );
     }
+
+    componentDidMount(){
+        this.props.fetchUserAndEvents();
+    }
 }
 
 const mapStateToProps = (state) => {
