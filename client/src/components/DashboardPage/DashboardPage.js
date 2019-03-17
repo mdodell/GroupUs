@@ -12,6 +12,8 @@
 
     import { fetchUserAndEvents, addEventDispatch } from '../../actions';
 
+    import { defaultSchema, conferenceSchema } from "../../formSchemas/formSchemas";
+
     import axios from 'axios';
 
     class DashBoardPage extends Component {
@@ -34,9 +36,25 @@
             });
         };
 
+        formSchema = (schemaOption) => {
+            switch(schemaOption){
+                case "default":
+                    return defaultSchema;
+                case "conference":
+                    return conferenceSchema;
+                case "create-new":
+                    return {schema: null};
+                default:
+                    return {schema: null}
+            }
+        };
+
         handleModalCreate = async () => {
             const { form } = this.formRef.props;
             const formFields = form.getFieldsValue();
+            form.resetFields();
+
+            const schema = this.formSchema(formFields.schema);
 
             const newEvent = {
                 title: formFields.title,
@@ -44,12 +62,15 @@
                 fromDate: formFields.datePicker[0].toDate().toISOString(),
                 toDate: formFields.datePicker[1].toDate().toISOString(),
                 dateSubmitted: Date.now(),
-                userId: this.props.currUser.user.userId
+                userId: this.props.currUser.user.userId,
+                properties: schema.properties,
+                required: schema.required,
+                type: "object"
             };
 
             await axios.post('/event/createEvent', newEvent)
                 .then((response) => {
-                    this.props.addEventDispatch(response.data); //need to dispatch here, don't have the newEventId
+                    this.props.addEventDispatch(response.data);
                 })
                 .catch(error => console.log(error));
             this.setState({

@@ -8,6 +8,7 @@ import { FadeIn } from '../StyledComponents';
 
 
 const EventCard = (props) => {
+
     return(
            <FadeIn>
                 <Card style={{width: "100%", height: "300px", marginBottom: "16px"}}>
