@@ -24,8 +24,8 @@
 
         renderEventCards = (arrayOfEvents) => {
             return arrayOfEvents.map((event) =>
-                <Col key={event.newEvent._id} style={{display: "flex"}} span={7}>
-                    <EventCard id={event.newEvent._id} title={event.newEvent.title} description={event.newEvent.description}/>
+                <Col key={event._id} style={{display: "flex"}} span={7}>
+                    <EventCard id={event._id} title={event.title} description={event.description}/>
                 </Col>
             )
         };

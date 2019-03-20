@@ -50,9 +50,18 @@ export const addEventDispatch = (event) => {
 export const addEvent = newEvent => {
     return {
         type: 'ADD_EVENT',
-        payload: {
-            newEvent
-        }
+        payload: newEvent
+    }
+};
+
+export const addRegistrationDispatch = registration => {
+    return dispatch => dispatch(addRegistration(registration));
+};
+
+export const addRegistration = registrationId => {
+    return {
+        type: 'ADD_REGISTRATION',
+        payload: registrationId
     }
 };
 

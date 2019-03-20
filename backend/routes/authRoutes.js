@@ -217,7 +217,7 @@ module.exports = (app) => {
                             existingEvent.registrations = [];
                         }
                         existingEvent.registrations.push(result._id.toString());
-                        existingEvent.save().then(function(result){
+                        existingEvent.save().then(function(eventResult){
                             res.json(result);
                         })
                     })

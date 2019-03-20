@@ -4,6 +4,10 @@ import axios from 'axios';
 
 import Form from "react-jsonschema-form";
 
+import { addRegistrationDispatch } from "../../actions";
+
+import { connect } from 'react-redux';
+
 import { Link } from 'react-router-dom';
 
 class EventForm extends Component {
@@ -12,7 +16,15 @@ class EventForm extends Component {
         this.getEvent(this.props.match.params.id);
     }
 
-    onSubmit = ({formData}) => console.log("Data submitted: ", formData);
+    onSubmit = ({formData}) => {
+        (axios.post('http://localhost:3001/event/submitRegistration', {
+                eventId: this.state.currEvent._id,
+                title: this.state.currEvent.title,
+                properties: formData
+            })
+            .then(res => this.props.addRegistrationDispatch(res.data))
+            .catch(err => console.log(err)));
+    };
 
     getEvent = eventId => {
         axios.get('http://localhost:3001/event/getEvent', {
@@ -36,7 +48,7 @@ class EventForm extends Component {
         this.state = {
             currEvent: null,
             currSchema: null
-        }
+        };
     }
 
     render(){
@@ -52,4 +64,10 @@ class EventForm extends Component {
     }
 };
 
-export default EventForm;
+const mapStateToProps = state => {
+    return {
+        currEvents: state.events
+    };
+};
+
+export default connect(mapStateToProps, { addRegistrationDispatch })(EventForm);
