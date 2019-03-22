@@ -43,22 +43,26 @@ export const fetchUserAndEvents = () => {
     }
 };
 
+export const addEventDispatch = (event) => {
+    return dispatch => dispatch(addEvent(event))
+};
+
 export const addEvent = newEvent => {
     return {
         type: 'ADD_EVENT',
-        payload: {
-            newEvent
-        }
+        payload: newEvent
     }
 };
 
-export const createEvent = () => {
-    return dispatch => {
-        return axios.get('http://localhost:3000/event/createEvent', {
-            headers: {"Access-Control-Allow-Origin": "http://localhost:3000"},
-            withCredentials: true
-        }).then(json => dispatch(addEvent(json.data)));
-    };
+export const addRegistrationDispatch = registration => {
+    return dispatch => dispatch(addRegistration(registration));
+};
+
+export const addRegistration = registrationId => {
+    return {
+        type: 'ADD_REGISTRATION',
+        payload: registrationId
+    }
 };
 
 

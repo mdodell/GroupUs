@@ -6,11 +6,13 @@
 
     import { DisplayEventsContainer, AddEventButton } from "../StyledComponents";
 
-    import { Row, Col, Icon, message } from 'antd';
+    import { Row, Col, Icon } from 'antd';
 
     import { connect } from 'react-redux';
 
-    import { fetchUserAndEvents } from '../../actions';
+    import { fetchUserAndEvents, addEventDispatch } from '../../actions';
+
+    import { defaultSchema, conferenceSchema } from "../../formSchemas/formSchemas";
 
     import axios from 'axios';
 
@@ -21,10 +23,9 @@
         };
 
         renderEventCards = (arrayOfEvents) => {
-            console.log(arrayOfEvents);
             return arrayOfEvents.map((event) =>
-                <Col key={event.newEvent._id} style={{display: "flex"}} span={7}>
-                    <EventCard title={event.newEvent.title} description={event.newEvent.description}/>
+                <Col key={event._id} style={{display: "flex"}} span={7}>
+                    <EventCard id={event._id} title={event.title} description={event.description}/>
                 </Col>
             )
         };
@@ -35,22 +36,43 @@
             });
         };
 
+        formSchema = (schemaOption) => {
+            switch(schemaOption){
+                case "default":
+                    return defaultSchema;
+                case "conference":
+                    return conferenceSchema;
+                case "create-new":
+                    return {schema: null};
+                default:
+                    return {schema: null}
+            }
+        };
+
         handleModalCreate = async () => {
             const { form } = this.formRef.props;
             const formFields = form.getFieldsValue();
+            form.resetFields();
 
-            await axios.post('/event/createEvent', {
+            const schema = this.formSchema(formFields.schema);
+
+            const newEvent = {
                 title: formFields.title,
                 description: formFields.description,
                 fromDate: formFields.datePicker[0].toDate().toISOString(),
                 toDate: formFields.datePicker[1].toDate().toISOString(),
                 dateSubmitted: Date.now(),
-                userId: this.props.currUser.user.userId
-            })
-                .then((response) => console.log(response))
-                .catch(error => console.log(error));
+                userId: this.props.currUser.user.userId,
+                properties: schema.properties,
+                required: schema.required,
+                type: "object"
+            };
 
-            window.location.reload(false);
+            await axios.post('/event/createEvent', newEvent)
+                .then((response) => {
+                    this.props.addEventDispatch(response.data);
+                })
+                .catch(error => console.log(error));
             this.setState({
                 addEventModalVisible: false
             });
@@ -77,27 +99,21 @@
                         <AddEventButton onClick={this.showModal}>
                             <Icon type="plus" />
                         </AddEventButton>
-                    <DisplayEventsContainer>
-                        <Row gutter={2} justify="space-around" type="flex">
-                            {this.renderEventCards(this.props.listOfEvents.events)}
-                        </Row>
-                        <AddEventModal
-                            wrappedComponentRef={this.saveFormRef}
-                            visible={this.state.addEventModalVisible}
-                            onCreate={this.handleModalCreate}
-                            onCancel={this.handleModalCancel}
-                        />
-                    </DisplayEventsContainer>
+                        <DisplayEventsContainer>
+                            <Row justify="space-around" type="flex">
+                                {this.renderEventCards(this.props.listOfEvents.events)}
+                             </Row>
+                            <AddEventModal
+                                 wrappedComponentRef={this.saveFormRef}
+                                 visible={this.state.addEventModalVisible}
+                                 onCreate={this.handleModalCreate}
+                                 onCancel={this.handleModalCancel}
+                             />
+                        </DisplayEventsContainer>
                     </div>
                 )
         }
-
-        componentDidMount(){
-            this.props.fetchUserAndEvents();
-        }
     };
-
-
 
     const mapStateToProps = state => {
         return {
@@ -107,4 +123,4 @@
     };
 
 
-    export default connect(mapStateToProps, { fetchUserAndEvents })(DashBoardPage);
+    export default connect(mapStateToProps, { fetchUserAndEvents, addEventDispatch })(DashBoardPage);

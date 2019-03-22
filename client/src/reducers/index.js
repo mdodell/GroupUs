@@ -23,7 +23,6 @@ const currUser = (user = userInitialState, action) => {
             };
 
         case FETCH_USER_SUCCESS:
-            console.log(action.payload.user);
             return {
                 ...userInitialState,
                 loading: false,
@@ -45,12 +44,25 @@ const currUser = (user = userInitialState, action) => {
 
 //Events Reducers
 const events = (state = eventsInitialState, action) => {
-  if(action.type === 'ADD_EVENT'){
-      return {
-          events: [...state.events, action.payload]
-      }
-  }
-  return state;
+    switch(action.type) {
+        case 'ADD_EVENT':
+            return {
+                events: [...state.events, action.payload]
+            };
+
+        case 'ADD_REGISTRATION':
+            let actionId = action.payload._id;
+            let eventPayloadId = action.payload.eventId;
+            return {
+                events: state.events.map(event => event._id === eventPayloadId ? {
+                    ...event,
+                    registrations: [...event.registrations, actionId]
+                } : event)
+            };
+
+        default:
+            return state;
+    }
 };
 
 //Database Reducers
