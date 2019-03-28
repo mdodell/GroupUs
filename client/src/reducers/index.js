@@ -9,10 +9,11 @@ const userInitialState = {
 };
 
 const eventsInitialState = {
-    events: []
+    events: [],
+    gettingList: false
 };
 
-// //User Reducers
+//User Reducers
 const currUser = (user = userInitialState, action) => {
     switch(action.type) {
         case FETCH_USER_BEGIN:
@@ -47,7 +48,14 @@ const events = (state = eventsInitialState, action) => {
     switch(action.type) {
         case 'ADD_EVENT':
             return {
-                events: [...state.events, action.payload]
+                events: [...state.events, action.payload],
+                gettingList: true
+            };
+
+        case 'EVENTS_SUCCESSFULLY_ADDED':
+            return {
+                ...state,
+                gettingList: false
             };
 
         case 'ADD_REGISTRATION':

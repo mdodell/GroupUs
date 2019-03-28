@@ -17,7 +17,7 @@ class EventForm extends Component {
     }
 
     onSubmit = ({formData}) => {
-        (axios.post('http://localhost:3001/event/submitRegistration', {
+        (axios.post('/event/submitRegistration', {
                 eventId: this.state.currEvent._id,
                 title: this.state.currEvent.title,
                 properties: formData
@@ -27,7 +27,7 @@ class EventForm extends Component {
     };
 
     getEvent = eventId => {
-        axios.get('http://localhost:3001/event/getEvent', {
+        axios.get('/event/getEvent', {
             params: {
                 id: eventId
             }

@@ -12,8 +12,8 @@ const EventCard = (props) => {
                 <Card style={{width: "100%", height: "300px", marginBottom: "16px"}}>
                     <h1>{props.title}</h1>
                     <p>{props.description}</p>
-                    <p>{props.id}</p>
-                    <EventCardLink id={props.id} />
+                    <EventCardLink linkType="link" route="/events" id={props.id} />
+                    <EventCardLink linkType="table" route="/registrations" id={props.id} />
                 </Card>
            </FadeIn>
     );

@@ -7,6 +7,7 @@ import './App.css';
 import LoginPage from '../LoginPage/LoginPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
 import EventForm from "../EventForm/EventForm";
+import RegistrationsPage from "../RegistrationsPage/RegistrationsPage";
 
 class App extends Component {
     render() {
@@ -17,6 +18,7 @@ class App extends Component {
                     <Route path="/dashboard" component={DashboardPage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/events/:id" component={EventForm} />
+                    <Route path="/registrations/:eventId" component={RegistrationsPage} />
                 </div>
             </Router>
         );

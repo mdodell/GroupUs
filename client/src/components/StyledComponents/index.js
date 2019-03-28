@@ -220,6 +220,17 @@ export const AddEventButton = styled.div`
     }
 `;
 
+//Loading Page
+export const LoadingPage = styled.div`
+    width: 100%;
+    height: 100vh;
+    background-color: #e6e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`;
+
 //Animation Wrappers
 const fadeInKeyframe = keyframes`
     from {

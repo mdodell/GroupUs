@@ -19,10 +19,14 @@ export const fetchUserFailure = error => ({
     payload: { error }
 });
 
+export const fetchEventsEnd = () => ({
+    type: 'EVENTS_SUCCESSFULLY_ADDED'
+});
+
 export const fetchUserAndEvents = () => {
     return dispatch => {
         dispatch(fetchUserBegin());
-        return axios.get('http://localhost:3001/auth/getUser', {
+        return axios.get('/auth/getUser', {
             headers: {"Access-Control-Allow-Origin": "http://localhost:3001"},
             withCredentials: true
         }
@@ -32,11 +36,11 @@ export const fetchUserAndEvents = () => {
             } else {
                 dispatch(fetchUserSuccess(json.data));
                 (json.data.events).forEach(event =>
-                    axios.get('http://localhost:3001/event/getEvent', {
+                    axios.get('/event/getEvent', {
                         params: {
                             id: event
                         }
-                    }).then(eventRes => dispatch(addEvent(eventRes.data))).catch(err => console.log(err)));
+                    }).then(eventRes => dispatch(addEvent(eventRes.data))).then(() => dispatch(fetchEventsEnd())).catch(err => console.log(err)));
             }
             return json.data;
         }).catch(error => dispatch(fetchUserFailure(error)));
