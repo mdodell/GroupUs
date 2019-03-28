@@ -1,12 +1,10 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 import Loading from '../Loading/Loading';
 
-import {Table} from 'antd';
-
-import {fetchUserAndEvents} from "../../actions";
+import { Table } from 'antd';
 
 class RegistrationsPage extends Component {
 
@@ -57,7 +55,7 @@ class RegistrationsPage extends Component {
 
     render() {
         const {registrations, loading, error, currEvent} = this.state;
-        if (this.props.listOfEvents.events.length !== 0 && !this.props.listOfEvents.gettingList && this.state.currEvent) { //check if the array is empty and list has not been rendered yet
+        if (this.state.currEvent) {
             let columns = [];
             let eventProperties = currEvent.properties[0];
             Object.keys(eventProperties).forEach(key => columns.push({
@@ -69,7 +67,6 @@ class RegistrationsPage extends Component {
                 <div style={{margin: '10px'}}>
                     <Table title={() => this.state.currEvent.title}dataSource={this.state.registrations} columns={columns} />
                 </div>
-
             )
         }
         return <Loading/>
@@ -83,4 +80,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, {fetchUserAndEvents})(RegistrationsPage);
+export default connect(mapStateToProps)(RegistrationsPage);
