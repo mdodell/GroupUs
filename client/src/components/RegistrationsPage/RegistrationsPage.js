@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { CSVLink, CSVDownload } from "react-csv";
 import axios from 'axios';
 
 import Loading from '../Loading/Loading';
 
-import { Table } from 'antd';
+import { Table, Button, Icon} from 'antd';
 
 class RegistrationsPage extends Component {
 
@@ -66,6 +67,7 @@ class RegistrationsPage extends Component {
             return (
                 <div style={{margin: '10px'}}>
                     <Table title={() => this.state.currEvent.title}dataSource={this.state.registrations} columns={columns} />
+                    {this.state.registrations.length > 0 ? <CSVLink data={this.state.registrations} target="_blank"><Button type="primary" shape="round" icon="download" size="large">Download</Button></CSVLink> : null}
                 </div>
             )
         }
