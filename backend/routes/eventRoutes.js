@@ -79,6 +79,27 @@ module.exports = (app) => {
         }
     });
 
+    app.post('/event/updateEvent', function(req, res) {
+        if(req.body){
+            if(req.body.eventId) {
+                Event.findOneAndUpdate({_id: req.body.eventId}, {$set: req.body}, {new: true}, (err, result) => {
+                    if (err) {
+                        res.json({success: false, message: "EventUpdateFailure"});
+                    }
+                    else {
+                        res.json(result);
+                    }
+                });
+            }
+            else{
+                res.json({success: false, message: "EventFindFailure"});
+            }
+        }
+        else{
+            res.json({success: false, message: "EventUpdateJSONFailure"});
+        }
+    });
+
 
     app.get('/event/getRegistration', (req, res) => {
         if(req.query) {
