@@ -58,6 +58,17 @@ export const addEvent = newEvent => {
     }
 };
 
+export const addPropertiesAndRequiredDispatch = event => {
+    return dispatch => dispatch(addPropertiesAndRequired(event));
+};
+
+export const addPropertiesAndRequired = updatedEvent => {
+    return {
+        type: 'UPDATE_EVENT',
+        payload: updatedEvent
+    }
+};
+
 export const addRegistrationDispatch = registration => {
     return dispatch => dispatch(addRegistration(registration));
 };

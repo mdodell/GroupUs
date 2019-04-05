@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 import axios from 'axios';
 
 import Loading from '../Loading/Loading';
 
-import { Table, Button, Icon} from 'antd';
+import { Table, Button } from 'antd';
 
 class RegistrationsPage extends Component {
 
@@ -55,8 +55,13 @@ class RegistrationsPage extends Component {
     };
 
     render() {
-        const {registrations, loading, error, currEvent} = this.state;
-        if (this.state.currEvent) {
+        const {registrations, loading, currEvent} = this.state;
+        if(loading){
+            return <Loading />
+        }
+        if(currEvent !== null && currEvent.properties === null && currEvent.required === null){
+            return <h1>Please set up the event schema!</h1>
+        }else if (currEvent !== null) {
             let columns = [];
             let eventProperties = currEvent.properties[0];
             Object.keys(eventProperties).forEach(key => columns.push({
@@ -67,11 +72,11 @@ class RegistrationsPage extends Component {
             return (
                 <div style={{margin: '10px'}}>
                     <Table title={() => this.state.currEvent.title}dataSource={this.state.registrations} columns={columns} />
-                    {this.state.registrations.length > 0 ? <CSVLink data={this.state.registrations} target="_blank"><Button type="primary" shape="round" icon="download" size="large">Download</Button></CSVLink> : null}
+                    {registrations.length > 0 ? <CSVLink data={registrations} target="_blank"><Button type="primary" shape="round" icon="download" size="large">Download</Button></CSVLink> : null}
                 </div>
             )
         }
-        return <Loading/>
+        return <h1>Error!</h1>
     }
 };
 

@@ -8,6 +8,8 @@
     "babel-plugin-import": "^1.11.0",
     "customize-cra": "^0.2.11",
     "http-proxy-middleware": "^0.19.1",
+    "jsoneditor": "^5.32.3",
+    "jsoneditor-react": "^1.0.0",
     "normalize.css": "^8.0.1",
     "react": "^16.7.0",
     "react-app-rewired": "^2.1.0",

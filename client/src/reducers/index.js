@@ -46,19 +46,21 @@ const currUser = (user = userInitialState, action) => {
 //Events Reducers
 const events = (state = eventsInitialState, action) => {
     switch(action.type) {
-        case 'ADD_EVENT':
+        case 'ADD_EVENT': {
             return {
                 events: [...state.events, action.payload],
                 gettingList: true
             };
+        }
 
-        case 'EVENTS_SUCCESSFULLY_ADDED':
+        case 'EVENTS_SUCCESSFULLY_ADDED': {
             return {
                 ...state,
                 gettingList: false
             };
+        }
 
-        case 'ADD_REGISTRATION':
+        case 'ADD_REGISTRATION': {
             let actionId = action.payload._id;
             let eventPayloadId = action.payload.eventId;
             return {
@@ -67,6 +69,20 @@ const events = (state = eventsInitialState, action) => {
                     registrations: [...event.registrations, actionId]
                 } : event)
             };
+        }
+
+        case 'UPDATE_EVENT': {
+            let required = action.payload.required;
+            let properties = action.payload.properties;
+            let eventPayloadId = action.payload._id;
+            return {
+                events: state.events.map(event => event._id === eventPayloadId ? {
+                    ...event,
+                    required,
+                    properties
+                } : event)
+            }
+        }
 
         default:
             return state;

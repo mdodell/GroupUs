@@ -12,7 +12,7 @@
 
     import { fetchUserAndEvents, addEventDispatch } from '../../actions';
 
-    import { defaultSchema, conferenceSchema } from "../../formSchemas/formSchemas";
+    import { defaultSchema, conferenceSchema, createNewEmptySchema } from "../../formSchemas/formSchemas";
 
     import axios from 'axios';
 
@@ -25,7 +25,7 @@
         renderEventCards = (arrayOfEvents) => {
             return arrayOfEvents.map((event) =>
                 <Col key={event._id} style={{display: "flex"}} span={7}>
-                    <EventCard id={event._id} title={event.title} description={event.description}/>
+                    <EventCard registrations={event.registrations} properties={event.properties} id={event._id} title={event.title} description={event.description}/>
                 </Col>
             )
         };
@@ -43,7 +43,7 @@
                 case "conference":
                     return conferenceSchema;
                 case "create-new":
-                    return {schema: null};
+                    return createNewEmptySchema;
                 default:
                     return {schema: null}
             }
@@ -77,6 +77,7 @@
                 addEventModalVisible: false
             });
         };
+
 
         handleModalCancel = () => {
             console.log("Canceled cancel modal!");

@@ -41,3 +41,8 @@ export const conferenceSchema = {
         }
     }
 };
+
+export const createNewEmptySchema = {
+    required: null,
+    properties: null
+};
