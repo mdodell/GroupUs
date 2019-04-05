@@ -6,9 +6,11 @@
 
     import { DisplayEventsContainer, AddEventButton } from "../StyledComponents";
 
-    import { Row, Col, Icon } from 'antd';
+    import { Row, Col, Icon, Layout } from 'antd';
 
     import { connect } from 'react-redux';
+
+    import NavBar from '../Navbar';
 
     import { fetchUserAndEvents, addEventDispatch } from '../../actions';
 
@@ -24,7 +26,7 @@
 
         renderEventCards = (arrayOfEvents) => {
             return arrayOfEvents.map((event) =>
-                <Col key={event._id} style={{display: "flex"}} span={7}>
+                <Col key={event._id} style={{display: "flex"}} span={24}>
                     <EventCard registrations={event.registrations} properties={event.properties} id={event._id} title={event.title} description={event.description}/>
                 </Col>
             )
@@ -80,7 +82,6 @@
 
 
         handleModalCancel = () => {
-            console.log("Canceled cancel modal!");
             const { form } = this.formRef.props;
 
             form.resetFields();
@@ -96,10 +97,12 @@
 
         render(){
                 return (
-                    <div>
+                    <Layout>
+                        <NavBar />
                         <AddEventButton onClick={this.showModal}>
                             <Icon type="plus" />
                         </AddEventButton>
+                        <Layout>
                         <DisplayEventsContainer>
                             <Row justify="space-around" type="flex">
                                 {this.renderEventCards(this.props.listOfEvents.events)}
@@ -111,7 +114,8 @@
                                  onCancel={this.handleModalCancel}
                              />
                         </DisplayEventsContainer>
-                    </div>
+                        </Layout>
+                    </Layout>
                 )
         }
     };

@@ -182,10 +182,7 @@ export const SocialAuthenticationButtonIcon = styled.img`
 
 //Dashboard
 export const DisplayEventsContainer = styled.div`
-    width: 100%;
     background-color: #e6e6e6;
-    top: 10vh;
-    position: relative;
 `;
 
 export const AddEventButton = styled.div`
