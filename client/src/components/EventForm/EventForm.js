@@ -18,7 +18,7 @@ import { Button } from 'antd';
 
 import { JsonEditor as Editor } from 'jsoneditor-react';
 import 'jsoneditor-react/es/editor.min.css';
-import { createNewEmptySchema, conferenceSchema } from '../../formSchemas/formSchemas';
+import { conferenceSchema } from '../../formSchemas/formSchemas';
 
 class EventForm extends Component {
 
@@ -75,7 +75,7 @@ class EventForm extends Component {
         this.state = {
             currEvent: null,
             currSchema: null,
-            json: createNewEmptySchema
+            json: conferenceSchema
         };
     }
 

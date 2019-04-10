@@ -69,7 +69,9 @@
                                 {getFieldDecorator('datePicker', {
                                     rules: [{ required: true, message: 'Please enter two dates' }],
                                 })(
-                                    <RangePicker />
+                                    <RangePicker
+                                        showTime
+                                    />
                                 )}
 
                             </Form.Item>

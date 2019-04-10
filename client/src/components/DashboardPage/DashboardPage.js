@@ -18,6 +18,10 @@
 
     import axios from 'axios';
 
+    import './DashboardPage.css';
+
+    const { Content } = Layout;
+
     class DashBoardPage extends Component {
 
         state = {
@@ -98,23 +102,25 @@
         render(){
                 return (
                     <Layout>
-                        <NavBar />
                         <AddEventButton onClick={this.showModal}>
                             <Icon type="plus" />
                         </AddEventButton>
-                        <Layout>
-                        <DisplayEventsContainer>
-                            <Row justify="space-around" type="flex">
-                                {this.renderEventCards(this.props.listOfEvents.events)}
-                             </Row>
-                            <AddEventModal
-                                 wrappedComponentRef={this.saveFormRef}
-                                 visible={this.state.addEventModalVisible}
-                                 onCreate={this.handleModalCreate}
-                                 onCancel={this.handleModalCancel}
-                             />
-                        </DisplayEventsContainer>
+                        <Layout className="responsiveDashboardLayout">
+                            <Content>
+                                <DisplayEventsContainer>
+                                    <Row justify="space-around" type="flex">
+                                        {this.renderEventCards(this.props.listOfEvents.events)}
+                                     </Row>
+                                    <AddEventModal
+                                         wrappedComponentRef={this.saveFormRef}
+                                         visible={this.state.addEventModalVisible}
+                                         onCreate={this.handleModalCreate}
+                                         onCancel={this.handleModalCancel}
+                                     />
+                                </DisplayEventsContainer>
+                            </Content>
                         </Layout>
+                        <NavBar />
                     </Layout>
                 )
         }

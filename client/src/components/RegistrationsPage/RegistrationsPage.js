@@ -76,7 +76,7 @@ class RegistrationsPage extends Component {
                 </div>
             )
         }
-        return <h1>Error!</h1>
+        return <Loading />
     }
 };
 
