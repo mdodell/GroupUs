@@ -2,19 +2,21 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { Icon } from 'antd';
+import { Icon, Tooltip } from 'antd';
+
+import { EventCardIconWrapper } from '../StyledComponents';
 
 
-const EventCardLink = (props) => {
+const EventCardIcon = (props) => {
     return(
-            <div>
+            <EventCardIconWrapper>
                 <Link style={{ textDecoration: 'none', color: 'rgba(0, 0, 0, 0.65)'}} to={{pathname: `${props.route}/${props.id}`, state: {
                     schema: props.schema
                     }}}>
-                    <Icon type={props.linkType}/>
+                    <Tooltip title={props.tooltipPrompt}><Icon type={props.iconType}/></Tooltip>
                 </Link>
-            </div>
+            </EventCardIconWrapper>
     );
 };
 
-export default EventCardLink;
+export default EventCardIcon;

@@ -185,6 +185,26 @@ export const DisplayEventsContainer = styled.div`
     background-color: #e6e6e6;
 `;
 
+export const EventCardLinkGroup = styled.div`
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: space-evenly;
+        -ms-flex-align: space-evenly;
+            align-items: space-evenly;
+    position: absolute;
+    bottom: 25px;
+    right: 50px;
+`;
+
+export const EventCardIconWrapper = styled.div`
+    margin: 10px;
+`;
+
 export const AddEventButton = styled.div`
     position: fixed;
     border-radius: 50%;
@@ -240,8 +260,13 @@ const fadeInKeyframe = keyframes`
 `;
 
 export const FadeIn = styled.div`
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
-    flex: 1 1 auto;
-    animation: ${fadeInKeyframe} 2s linear forwards;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    -webkit-animation: ${fadeInKeyframe} 2s linear forwards;
+            animation: ${fadeInKeyframe} 2s linear forwards;
 `;
