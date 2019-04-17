@@ -1,13 +1,16 @@
 import React from 'react';
 
 import { Icon, Menu } from 'antd';
+import { Link } from 'react-router-dom';
 
 const MenuGroup = () => {
     return (
         <Menu style={{height: '100vh'}} theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1">
-                <Icon type="desktop" />
-                <span className="nav-text">Dashboard</span>
+                <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+                    <Icon type="desktop" />
+                    <span className="nav-text">Dashboard</span>
+                </Link>
             </Menu.Item>
             <Menu.Item key="2">
                 <Icon type="table" />

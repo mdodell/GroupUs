@@ -1,1 +1,7 @@
 @import '~antd/dist/antd.css';
+
+@media screen and (min-width: 993px) {
+    .responsiveLayout {
+        margin-left: 200px
+    }
+}

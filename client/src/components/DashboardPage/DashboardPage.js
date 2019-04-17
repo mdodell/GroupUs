@@ -18,7 +18,7 @@
 
     import axios from 'axios';
 
-    import './DashboardPage.css';
+    import '../App/App.css';
 
     const { Content } = Layout;
 
@@ -103,9 +103,9 @@
                 return (
                     <Layout>
                         <AddEventButton onClick={this.showModal}>
-                            <Icon type="plus" />
+                            <Icon style={{color: 'rgba(255, 255, 255, 0.65)'}} type="plus" />
                         </AddEventButton>
-                        <Layout className="responsiveDashboardLayout">
+                        <Layout className="responsiveLayout">
                             <Content>
                                 <DisplayEventsContainer>
                                     <Row justify="space-around" type="flex">

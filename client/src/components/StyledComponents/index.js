@@ -210,7 +210,7 @@ export const AddEventButton = styled.div`
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    background-color: blue;
+    background-color: #001529;
     z-index: 2;
     bottom: 10px;
     right: 10px;
@@ -232,7 +232,7 @@ export const AddEventButton = styled.div`
     
     &:hover {
         cursor: pointer;
-        background-color: lightblue;
+        background-color: #1890ff;
         
     }
 `;
