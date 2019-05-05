@@ -46,7 +46,7 @@ class RegistrationsPage extends Component {
     getEvent = () => {
        axios.get('/event/getEvent', {
            params: {
-               id: this.props.match.params.eventId
+               id: this.props.match.params.id
            }
        }).then(res => {
            this.setState({currEvent: res.data});

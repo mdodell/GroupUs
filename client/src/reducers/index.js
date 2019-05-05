@@ -13,6 +13,14 @@ const eventsInitialState = {
     gettingList: false
 };
 
+const createEventInitialState = {
+    title: "Event Title",
+    description: "Event Description",
+    type: "object",
+    required: [],
+    properties: {}
+};
+
 //User Reducers
 const currUser = (user = userInitialState, action) => {
     switch(action.type) {
@@ -97,9 +105,52 @@ const database = (oldListOfDatabases = [], action) => {
     return oldListOfDatabases;
 };
 
+
+const newEvent = (state = createEventInitialState, action) => {
+    switch(action.type){
+        case 'ADD_PROPERTY':
+            return {
+                ...state,
+                properties: {...state.properties, ...action.payload}
+            };
+        case 'REMOVE_PROPERTY':
+            return {
+                ...state,
+                properties: state.properties.filter(property => property !== action.payload)
+            };
+        case 'ADD_REQUIRED':
+            let newRequiredArray = [...state.required, action.payload];
+            return {
+                ...state,
+                required: newRequiredArray
+            };
+
+        case 'DELETE_REQUIRED':
+            return {
+                ...state,
+                required: state.required.filter(requiredKey => requiredKey !== action.payload)
+            };
+
+        case 'UPDATE_TITLE':
+            return {
+                ...state,
+                title: action.payload
+            };
+
+        case 'UPDATE_DESCRIPTION':
+            return {
+                ...state,
+                description: action.payload
+            };
+
+        default: return state;
+    }
+};
+
 //combineReducers
 export default combineReducers({
     currUser: currUser,
     events: events,
-    databases: database
+    databases: database,
+    newEvent: newEvent
 });

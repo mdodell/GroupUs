@@ -248,6 +248,17 @@ export const LoadingPage = styled.div`
     flex-direction: column;
 `;
 
+//Error Message
+export const ErrorContainerWrapper = styled.div`
+    width: 100%;
+    height: 100vh;
+`;
+
+export const VerticalLine = styled.div`
+    border-left: 1px dotted black;
+    height: 100px;
+`;
+
 //Animation Wrappers
 const fadeInKeyframe = keyframes`
     from {

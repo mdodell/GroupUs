@@ -7,8 +7,7 @@ import Form from "react-jsonschema-form";
 import { addRegistrationDispatch, addPropertiesAndRequiredDispatch } from "../../actions";
 
 import { connect } from 'react-redux';
-
-import { Link } from 'react-router-dom';
+import { message } from 'antd';
 import Loading from '../Loading/Loading';
 
 class EventForm extends Component {
@@ -23,8 +22,11 @@ class EventForm extends Component {
                 title: this.state.currEvent.title,
                 properties: formData
             })
-            .then(res => this.props.addRegistrationDispatch(res.data))
-            .catch(err => console.log(err)));
+            .then(res => {
+                this.props.addRegistrationDispatch(res.data);
+                message.success('Submission Submitted!');
+            })
+            .catch(err => message.error("An error occurred while submitted!")));
     };
 
     getEvent = eventId => {
@@ -80,8 +82,7 @@ class EventForm extends Component {
                     <Form schema={currSchema}
                           onChange={console.log("changed")}
                           onSubmit={this.onSubmit}
-                          onError={console.log("errors")}/>
-                    <Link to="/dashboard">Dashboard Link</Link>
+                          onError={console.log("errors")} />
                 </div>
             )
         } else {

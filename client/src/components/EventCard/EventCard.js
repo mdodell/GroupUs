@@ -1,11 +1,7 @@
 import React from 'react';
-
 import { Card, Typography } from 'antd';
-
 import EventCardIcon from './EventCardLink';
-
 import { FadeIn, EventCardLinkGroup } from '../StyledComponents';
-
 const { Title, Text } = Typography;
 
 const renderEventCards = ({registrations, properties, id}) => {

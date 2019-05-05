@@ -78,12 +78,12 @@ class CreateFormPage extends Component {
     };
 
     render() {
+
         const {currEvent, json} = this.state;
-        console.log(this.state);
         if (currEvent !== null) {
             return (
                 <div>
-                    <div stlye={{ display: 'flex', flexDirection: 'column'}}>
+                    <div style={{ display: 'flex', flexDirection: 'column'}}>
                                 <h1>{currEvent.title}</h1>
                                 <p>{currEvent.description}</p>
                                 <Editor

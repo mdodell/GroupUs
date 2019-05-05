@@ -80,6 +80,50 @@ export const addRegistration = registrationId => {
     }
 };
 
+export const addRequiredToCurrEvent = key => {
+    return dispatch => dispatch({
+        type: 'ADD_REQUIRED',
+        payload: key
+    })
+};
+
+export const deleteRequiredFromCurrEvent = key => {
+    return dispatch => dispatch({
+        type: 'DELETE_REQUIRED',
+        payload: key
+    })
+};
+
+export const updateCurrEventTitle = title => {
+    return dispatch => dispatch({
+        type: 'UPDATE_TITLE',
+        payload: title
+    })
+};
+
+export const updateCurrEventDescription = description => {
+    return dispatch => dispatch(
+        {
+        type: 'UPDATE_DESCRIPTION',
+        payload: description
+    })
+};
+
+export const addPropertyToCurrEvent = property => {
+    return dispatch => dispatch({
+            type: 'ADD_PROPERTY',
+            payload: property
+        });
+};
+
+export const removePropertyFromCurrEvent = property => {
+    return dispatch => ({
+        type: 'REMOVE_PROPERTY',
+        payload: property
+    })
+};
+
+
 
 
 
