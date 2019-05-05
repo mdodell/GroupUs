@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { CSVLink } from "react-csv";
+import ReactExport from 'react-data-export';
 import axios from 'axios';
 
 import Loading from '../Loading/Loading';
 
 import { Table, Button } from 'antd';
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 
 class RegistrationsPage extends Component {
 
@@ -62,6 +65,26 @@ class RegistrationsPage extends Component {
         if(currEvent !== null && currEvent.properties === null && currEvent.required === null){
             return <h1>Please set up the event schema!</h1>
         }else if (currEvent !== null) {
+
+            const excelDataSet = [];
+
+            const excelTitles = {};
+            excelTitles.columns = [];
+            excelTitles.data = [];
+            excelTitles.data.push([{value: "GroupUs", style: {font: {name: "Segoe UI", sz: "16", bold: true}}}]);
+            excelTitles.data.push([{value: ""}]);
+            if(currEvent.title){
+                excelTitles.data.push([{value: "Title:", style: {font: {name: "Segoe UI", sz: "14", bold: true}}}]);
+                excelTitles.data.push([{value: currEvent.title, style: {font: {name: "Segoe UI", sz: "14"}}}]);
+                if(currEvent.description){
+                    excelTitles.data.push([{value: ""}]);
+                    excelTitles.data.push([{value: "Description:", style: {font: {name: "Segoe UI", sz: "14", bold: true}}}]);
+                    excelTitles.data.push([{value: currEvent.description, style: {font: {name: "Segoe UI", sz: "14"}}}]);
+                }
+            }
+            excelTitles.ySteps = -1;
+            excelDataSet.push(excelTitles);
+
             let columns = [];
             let eventProperties = currEvent.properties[0];
             Object.keys(eventProperties).forEach(key => columns.push({
@@ -69,10 +92,37 @@ class RegistrationsPage extends Component {
                 dataIndex: key,
                 key: key
             }));
+
+            const excelCols = [];
+            for(var i=0; i<columns.length; i++){
+                excelCols.push({value: columns[i].title, style: {font: {name: "Segoe UI", sz: "12", bold: true}}});
+            }
+            const excelHeader = {};
+            excelHeader.columns = [];
+            excelHeader.data = [excelCols];
+            excelHeader.ySteps = 0;
+            excelDataSet.push(excelHeader);
+
+            const excelRows = [];
+            for(var x=0; x<this.state.registrations.length; x++){
+                const excelRow = [];
+                for(var y=0; y<columns.length; y++){
+                    excelRow.push(this.state.registrations[x].hasOwnProperty(columns[y].key) ? {style: {font: {name: "Segoe UI", sz: "12"}}, value: this.state.registrations[x][columns[y].key]} : {style: {font: {name: "Segoe UI", sz: "12"}}, value: ""});
+                }
+                excelRows.push(excelRow);
+            }
+            const excelBody = {};
+            excelBody.columns = [];
+            excelBody.data = excelRows;
+            excelBody.ySteps = -1;
+            excelDataSet.push(excelBody);
+
+            console.log(excelDataSet);
+
             return (
                 <div style={{margin: '10px'}}>
                     <Table title={() => this.state.currEvent.title}dataSource={this.state.registrations} columns={columns} />
-                    {registrations.length > 0 ? <CSVLink data={registrations} target="_blank"><Button type="primary" shape="round" icon="download" size="large">Download</Button></CSVLink> : null}
+                    {registrations.length > 0 ? <ExcelFile element={<Button type="primary" shape="round" icon="download" size="large">Download</Button>}><ExcelSheet dataSet={excelDataSet} name="Registrations"/></ExcelFile> : null}
                 </div>
             )
         }
