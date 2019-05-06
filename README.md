@@ -1,3 +1,6 @@
+![Alt text](https://raw.githubusercontent.com/mdodell/GroupUs/master/logo.svg?sanitize=true
+ "GroupUs")
+
 # GroupUs
 GroupUs is a modular group registration web application being developed as part of an Independent Study at Brandeis University.
 
