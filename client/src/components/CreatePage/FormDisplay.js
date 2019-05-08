@@ -9,11 +9,6 @@ import axios from "axios/index";
 import {addPropertiesAndRequiredDispatch} from "../../actions";
 
 class FormDisplay extends Component {
-
-    constructor(props){
-        super(props);
-    }
-
     handleJSONSubmit() {
         const { event, currEvent } = this.props;
         axios.post('/event/updateEvent', {

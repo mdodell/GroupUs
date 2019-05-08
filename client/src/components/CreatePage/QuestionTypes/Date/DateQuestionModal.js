@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-    Modal, Form, Input, Switch, InputNumber
+    Modal, Form, Input, Switch
 } from 'antd';
 
 import { connect } from 'react-redux';

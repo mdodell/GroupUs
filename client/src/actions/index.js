@@ -87,13 +87,6 @@ export const addRequiredToCurrEvent = key => {
     })
 };
 
-export const deleteRequiredFromCurrEvent = key => {
-    return dispatch => dispatch({
-        type: 'DELETE_REQUIRED',
-        payload: key
-    })
-};
-
 export const updateCurrEventTitle = title => {
     return dispatch => dispatch({
         type: 'UPDATE_TITLE',
@@ -116,10 +109,9 @@ export const addPropertyToCurrEvent = property => {
         });
 };
 
-export const removePropertyFromCurrEvent = property => {
-    return dispatch => ({
-        type: 'REMOVE_PROPERTY',
-        payload: property
+export const resetPropertyAndRequiredInCurrEvent = () => {
+    return dispatch => dispatch({
+        type: 'RESET_PROPERTY_AND_REQUIRED'
     })
 };
 

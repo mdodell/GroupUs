@@ -41,7 +41,7 @@
                         <Form layout="vertical">
                             <Form.Item label="Title">
                                 {getFieldDecorator('title', {
-                                    rules: [{ required: true, message: 'Please input the title of collection!' }],
+                                    rules: [{ required: true, message: 'Please input the title of the event!' }],
                                 })(
                                     <Input />
                                 )}

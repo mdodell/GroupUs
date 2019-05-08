@@ -14,8 +14,8 @@ const eventsInitialState = {
 };
 
 const createEventInitialState = {
-    title: "Event Title",
-    description: "Event Description",
+    title: null,
+    description: null,
     type: "object",
     required: [],
     properties: {}
@@ -143,6 +143,14 @@ const newEvent = (state = createEventInitialState, action) => {
                 description: action.payload
             };
 
+        case 'RESET_PROPERTY_AND_REQUIRED':
+            return {
+                ...state,
+                title: null,
+                description: null,
+                required: [],
+                properties: {}
+            };
         default: return state;
     }
 };

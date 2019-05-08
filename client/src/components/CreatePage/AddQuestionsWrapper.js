@@ -9,11 +9,6 @@ import DateQuestionModal from "./QuestionTypes/Date/DateQuestionModal";
 const { Title } = Typography;
 
 class AddQuestionsWrapper extends Component {
-
-    constructor(props){
-        super(props);
-    }
-
     showTextQuestionModal = () => {
         this.textQuestionModal.showModal();
     };
@@ -37,7 +32,6 @@ class AddQuestionsWrapper extends Component {
                 <QuestionButton onClick={() => this.showTextQuestionModal()} iconType="font-size" questionType="Text"/>
                 <QuestionButton onClick={() => this.showNumberQuestionModal()} iconType="calculator" questionType="Number"/>
                 <QuestionButton onClick={() => this.showDateQuestionModal()} iconType="calendar" questionType="Date"/>
-                <QuestionButton iconType="check-circle" questionType="Checkbox"/>
                 <TextQuestionModal
                     wrappedComponentRef={(inst) => this.textQuestionModal = inst}
                 />

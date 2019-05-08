@@ -5,7 +5,9 @@ import axios from 'axios';
 
 import Loading from '../Loading/Loading';
 
-import { Table, Button } from 'antd';
+import { Table, Button, Icon } from 'antd';
+
+import { Link } from 'react-router-dom';
 
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
@@ -121,6 +123,12 @@ class RegistrationsPage extends Component {
 
             return (
                 <div style={{margin: '10px'}}>
+                    <Button type="primary">
+                        <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+                            <Icon type="desktop" style={{marginRight: "10px"}}/>
+                            <span>Dashboard</span>
+                        </Link>
+                    </Button>
                     <Table title={() => this.state.currEvent.title}dataSource={this.state.registrations} columns={columns} />
                     {registrations.length > 0 ? <ExcelFile element={<Button type="primary" shape="round" icon="download" size="large">Download</Button>}><ExcelSheet dataSet={excelDataSet} name="Registrations"/></ExcelFile> : null}
                 </div>
