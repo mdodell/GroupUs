@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8e21017-81d2-497b-b132-973cc15e7acb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RegistrationsPage/RegistrationsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RegistrationsPage/RegistrationsPage.js" afterDir="false" />
-    </list>
+    <list default="true" id="c8e21017-81d2-497b-b132-973cc15e7acb" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -403,7 +399,7 @@
       <workItem from="1552364533165" duration="12637000" />
       <workItem from="1552466553527" duration="1201000" />
       <workItem from="1557007150355" duration="3211000" />
-      <workItem from="1557087579463" duration="3027000" />
+      <workItem from="1557087579463" duration="3627000" />
     </task>
     <task id="LOCAL-00001" summary="Added a few semicolons, and set up to work on my machine">
       <created>1548143924040</created>
@@ -430,7 +426,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70836000" />
+    <option name="totallyTimeSpent" value="71436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="935" extended-state="6" />
@@ -441,7 +437,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5136579" side_tool="true" visible="true" weight="0.32546583" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48634204" visible="true" weight="0.32546583" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48634204" weight="0.32546583" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.5821001" weight="0.15279673" />
